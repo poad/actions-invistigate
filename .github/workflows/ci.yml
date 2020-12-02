@@ -35,7 +35,7 @@ jobs:
       - name: github
         env:
           GITHUB: ${{ toJSON(github) }}
-        run: echo ${EVENT}
+        run: echo ${GITHUB}
 
 
       # Runs a single command using the runners shell
