@@ -42,11 +42,11 @@ jobs:
         run: echo ${ENV} | jq .
 
       - name: on pull request
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
         run: echo pr/${{ github.event.pull_request.number }}
 
       - name: on push
-        if: github.event_name == "push"
+        if: github.event_name == 'push'
         run: |
           ref=${{ github.ref }}
           echo ${ref##*/}
