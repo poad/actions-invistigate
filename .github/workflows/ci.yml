@@ -20,26 +20,43 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: install jq
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -qqy --no-install-recommends jq
 
-      # Runs a single command using the runners shell
       - name: events
         env:
           EVENT: ${{ toJSON(github.event) }}
-        run: echo ${EVENT}
+        run: echo ${EVENT} | jq .
 
-      # Runs a single command using the runners shell
       - name: github
         env:
           GITHUB: ${{ toJSON(github) }}
-        run: echo ${GITHUB}
+        run: echo ${GITHUB} | jq .
 
-
-      # Runs a single command using the runners shell
       - name: env
         env:
           ENV: ${{ toJSON(env) }}
-        run: echo ${ENV}
+        run: echo ${ENV} | jq .
+
+      - name: on pull request
+        if: github.event_name == 'pull_request'
+        run: echo pr/${{ github.event.pull_request.number }}
+
+      - name: on push
+        if: github.event_name == 'push'
+        run: |
+          ref=${{ github.ref }}
+          echo ${ref##*/}
+
+      - name: inline check
+        run: |
+          if [ -z ${{ github.base_ref }} ]; then
+            ref=${{ github.ref }}
+            echo ${ref##*/}
+          else
+            echo pr/${{ github.event.pull_request.number }}
+          fi
+          echo "event: ${{ github.event_name }}"
