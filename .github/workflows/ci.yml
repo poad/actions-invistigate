@@ -60,3 +60,21 @@ jobs:
             echo pr/${{ github.event.pull_request.number }}
           fi
           echo "event: ${{ github.event_name }}"
+
+  docker:
+    runs-on: macos-latest
+    steps:
+      - name: Homebrew install
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - name: Install docker
+        run: |
+          brew install docker-machine
+          brew update-reset && brew update
+          brew install --cask docker
+          open /Applications/Docker.app
+
+      - name: Test
+        run: |
+          docker –version
