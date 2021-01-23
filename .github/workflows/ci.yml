@@ -60,3 +60,26 @@ jobs:
             echo pr/${{ github.event.pull_request.number }}
           fi
           echo "event: ${{ github.event_name }}"
+
+  test:
+    strategy:
+      matrix:
+        pattern: [
+          { "version": "8", "distribution": "adopt", "directory": "AdoptOpenJDK", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+          { "version": "8", "distribution": "amazon", "directory": "Amazon Corretto", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+          { "version": "8", "distribution": "liberica", "directory": "Liberica", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+          { "version": "8", "distribution": "zulu", "directory": "Zulu", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+
+          { "version": "11", "distribution": "adopt", "directory": "AdoptOpenJDK", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+          { "version": "11", "distribution": "amazon", "directory": "Amazon Corretto", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+          { "version": "11", "distribution": "liberica", "directory": "Liberica", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+          { "version": "11", "distribution": "zulu", "directory": "Zulu", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+          { "version": "11", "distribution": "sap", "directory": "SapMachine", "linux_versions": [ "focal" , "bionic", "buster", "jessie", "stable", "stretch", "xenial" ] },
+
+          { "version": "15", "distribution": "", "directory": "", "linux_versions": [ "focal" ] }
+        ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: test echo
+        run: |
+          echo ${{ toJson(matrix.pattern.linux_versions) }}
