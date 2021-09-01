@@ -55,3 +55,33 @@ jobs:
             echo pr/${{ github.event.pull_request.number }}
           fi
           echo "event: ${{ github.event_name }}"
+
+  mac-docker:
+    runs-on: macos-11
+
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash --noprofile --norc -exo pipefail {0}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: setup docker
+        uses: docker-practice/actions-setup-docker@v1
+      
+      - name: Test
+        run: |
+          # set -x
+          docker version
+          cat /etc/docker/daemon.json || true
+          cat /Users/runner/.docker/daemon.json || true
+          docker buildx version || true
+          docker buildx ls || true
+
+      - name: Docker build
+        run: |
+          docker build --rm -it --name hello .
+      
+      - name: Test run
+        run: docker run --rm -it hello "Hello! world."
