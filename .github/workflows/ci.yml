@@ -11,15 +11,25 @@ on:
 
   workflow_dispatch:
 
+env:
+  AWS_REGION: us-west-2
+
+permissions:
+  id-token: write
+  actions: write
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: install jq
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -qqy --no-install-recommends jq
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_ARN }}
+          role-session-name: GitHubActions
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: events
         env:
@@ -55,3 +65,51 @@ jobs:
             echo pr/${{ github.event.pull_request.number }}
           fi
           echo "event: ${{ github.event_name }}"
+
+  pass:
+    runs-on: ubuntu-20.04
+    outputs:
+      credentials: ${{ steps.export-credentials.outputs.credentials }}
+
+    steps:
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_ARN }}
+          role-session-name: GitHubActions
+          aws-region: ${{ env.AWS_REGION }}
+      - name: validate session
+        shell: bash
+        run: |
+          echo "::group::test auth is valid"
+            aws sts get-caller-identity
+          echo "::endgroup::"
+      - name: export
+        id: export-credentials
+        run: |
+          credentials=$(cat <<EOF
+          {
+           "aws_access_key_id": "${{ env.AWS_ACCESS_KEY_ID }}",
+           "aws_secret_access_key": "${{ env.AWS_SECRET_ACCESS_KEY }}",
+           "aws_session_token": "${{ env.AWS_SESSION_TOKEN }}",
+           "region": "${{ env.AWS_REGION }}",
+           "default_region": "${{ env.AWS_DEFAULT_REGION }}"
+          }
+          EOF
+          )
+          encoded=$(echo ${credentials} | tr -d '\n' | base64)
+          echo "::set-output name=credentials::${encoded}"
+      - name: verify
+        env:
+          CREDENTIALS: ${{ steps.export-credentials.outputs.credentials }}
+        run: echo "${CREDENTIALS}" | base64 -d
+
+  recieve:
+    runs-on: ubuntu-20.04
+    needs: [ pass ]
+
+    steps:
+      - name: import
+        run: |
+          if [ -z "${{ needs.pass.outputs.credentials }}" ]; then exit 1; fi
+          echo ${{ needs.pass.outputs.credentials }} | jq .
