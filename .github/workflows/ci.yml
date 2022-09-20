@@ -7,9 +7,10 @@ on:
     branches: [ main ]
   create:
     tags: [ '*' ]
-  # schedule:
-  #   - cron:  '5 * * * *'
-  #   # - cron:  '*/10 * * * *'
+
+  schedule:
+    - cron: '0 0-12 * * 1-5'
+    - cron: '0 18 * * 0-4'
 
   workflow_dispatch:
     inputs:
