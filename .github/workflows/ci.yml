@@ -16,6 +16,13 @@ on:
     inputs:
       source_version:
         required: false
+      test:
+        required: true
+        default: "hoge"
+
+        choice:
+          - "hoge"
+          - "fuga"
 
 jobs:
   build:
