@@ -29,6 +29,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: check inputs
+        env:
+          TEST: ${{ github.event.inputs.test }}
+        run: echo ${TEST}
+
+      - name: check inputs2
+        env:
+          TEST: ${{ github.event.inputs.test }}
+        run: if [ "" = " ${TEST}" ]; then echo "true"; else echo "false"; fi
+
       - name: install jq
         run: |
           sudo apt-get update -qq
