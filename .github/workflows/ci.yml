@@ -40,9 +40,7 @@ jobs:
         run: if [ "" = " ${TEST}" ]; then echo "true"; else echo "false"; fi
 
       - name: install jq
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -qqy --no-install-recommends jq
+        run: sudo apt update -qqq && sudo apt install -qqqy --no-install-recommends jq
 
       - name: events
         env:
