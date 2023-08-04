@@ -2,11 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+    tags: 
+      - '*'
   pull_request:
-    branches: [ main ]
-  create:
-    tags: [ '*' ]
+    branches:
+      - main
+  release:
+    types:
+      - published
 
   schedule:
     - cron: '0 0-12 * * 1-5'
@@ -19,8 +24,8 @@ on:
       test:
         required: true
         default: "hoge"
-
-        choice:
+        type: choice
+        options:
           - "hoge"
           - "fuga"
 
