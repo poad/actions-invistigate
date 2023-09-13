@@ -4,14 +4,14 @@
 {
   "token": "***",
   "job": "build",
-  "ref": "refs/pull/11/merge",
-  "sha": "de4bc4b9c37fb9aade086515828dcf380104fb34",
+  "ref": "refs/pull/12/merge",
+  "sha": "5a504d51c7ed7612546f2c55876f444203b6e6fd",
   "repository": "poad/actions-invistigate",
   "repository_owner": "poad",
   "repository_owner_id": "1867845",
   "repositoryUrl": "git://github.com/poad/actions-invistigate.git",
-  "run_id": "6168367434",
-  "run_number": "1596",
+  "run_id": "6230052775",
+  "run_number": "1",
   "retention_days": "90",
   "run_attempt": "1",
   "artifact_cache_size_limit": "10",
@@ -22,29 +22,31 @@
   "actor_id": "1867845",
   "actor": "poad",
   "triggering_actor": "poad",
-  "workflow": "CI",
-  "head_ref": "test/action",
+  "workflow": "CI (without permission)",
+  "head_ref": "feat/with-permissions",
   "base_ref": "main",
   "event_name": "pull_request",
   "event": {
-    "action": "opened",
-    "number": 11,
+    "action": "synchronize",
+    "after": "e3a17252cb2c9f9510c23103bb563e030c7b2fb8",
+    "before": "928bbbc794716fd6f5bf2f1f032000910a555efe",
+    "number": 12,
     "pull_request": {
       "_links": {
         "comments": {
-          "href": "https://api.github.com/repos/poad/actions-invistigate/issues/11/comments"
+          "href": "https://api.github.com/repos/poad/actions-invistigate/issues/12/comments"
         },
         "commits": {
-          "href": "https://api.github.com/repos/poad/actions-invistigate/pulls/11/commits"
+          "href": "https://api.github.com/repos/poad/actions-invistigate/pulls/12/commits"
         },
         "html": {
-          "href": "https://github.com/poad/actions-invistigate/pull/11"
+          "href": "https://github.com/poad/actions-invistigate/pull/12"
         },
         "issue": {
-          "href": "https://api.github.com/repos/poad/actions-invistigate/issues/11"
-        },
-        "review_comment": {
-          "href": "https://api.github.com/repos/poad/actions-invistigate/pulls/comments{/number}"
+      "releases_url": "https://api.github.com/repos/poad/actions-invistigate/releases{/id}",
+      "size": 22,
+      "ssh_url": "git@github.com:poad/actions-invistigate.git",
+      "stargazers_count": 0,
       "stargazers_url": "https://api.github.com/repos/poad/actions-invistigate/stargazers",
       "statuses_url": "https://api.github.com/repos/poad/actions-invistigate/statuses/{sha}",
       "subscribers_url": "https://api.github.com/repos/poad/actions-invistigate/subscribers",
@@ -85,21 +87,21 @@
   "server_url": "https://github.com",
   "api_url": "https://api.github.com",
   "graphql_url": "https://api.github.com/graphql",
-  "ref_name": "11/merge",
+  "ref_name": "12/merge",
   "ref_protected": false,
   "ref_type": "branch",
   "secret_source": "Actions",
-  "workflow_ref": "poad/actions-invistigate/.github/workflows/ci.yml@refs/pull/11/merge",
-  "workflow_sha": "de4bc4b9c37fb9aade086515828dcf380104fb34",
+  "workflow_ref": "poad/actions-invistigate/.github/workflows/ci-without-permission.yml@refs/pull/12/merge",
+  "workflow_sha": "5a504d51c7ed7612546f2c55876f444203b6e6fd",
   "workspace": "/home/runner/work/actions-invistigate/actions-invistigate",
   "action": "__run_5",
   "event_path": "/home/runner/work/_temp/_github_workflow/event.json",
   "action_repository": "",
   "action_ref": "",
-  "path": "/home/runner/work/_temp/_runner_file_commands/add_path_2def782c-6599-4a5f-b9ad-4738214b5cc5",
-  "env": "/home/runner/work/_temp/_runner_file_commands/set_env_2def782c-6599-4a5f-b9ad-4738214b5cc5",
-  "step_summary": "/home/runner/work/_temp/_runner_file_commands/step_summary_2def782c-6599-4a5f-b9ad-4738214b5cc5",
-  "state": "/home/runner/work/_temp/_runner_file_commands/save_state_2def782c-6599-4a5f-b9ad-4738214b5cc5",
-  "output": "/home/runner/work/_temp/_runner_file_commands/set_output_2def782c-6599-4a5f-b9ad-4738214b5cc5"
+  "path": "/home/runner/work/_temp/_runner_file_commands/add_path_d574622c-7e02-40b4-9f6e-d9f893428953",
+  "env": "/home/runner/work/_temp/_runner_file_commands/set_env_d574622c-7e02-40b4-9f6e-d9f893428953",
+  "step_summary": "/home/runner/work/_temp/_runner_file_commands/step_summary_d574622c-7e02-40b4-9f6e-d9f893428953",
+  "state": "/home/runner/work/_temp/_runner_file_commands/save_state_d574622c-7e02-40b4-9f6e-d9f893428953",
+  "output": "/home/runner/work/_temp/_runner_file_commands/set_output_d574622c-7e02-40b4-9f6e-d9f893428953"
 }
 ```
