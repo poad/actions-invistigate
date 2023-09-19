@@ -1,4 +1,4 @@
-name: CI
+name: CI (without permission)
 
 on:
   push:
@@ -12,31 +12,6 @@ on:
   release:
     types:
       - published
-
-  schedule:
-    - cron: '0 0-12 * * 1-5'
-    - cron: '0 18 * * 0-4'
-
-  workflow_dispatch:
-    inputs:
-      source_version:
-        required: false
-      test:
-        required: true
-        default: "hoge"
-        type: choice
-        options:
-          - "hoge"
-          - "fuga"
-
-
-permissions:
-  actions: read
-  checks: write
-  contents: write
-  id-token: write
-  pull-requests: write
-  statuses: write
 
 jobs:
   build:

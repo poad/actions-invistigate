@@ -1,17 +1,17 @@
-# Pull Request
+
 
 ```json
 {
   "token": "***",
   "job": "build",
   "ref": "refs/pull/12/merge",
-  "sha": "5a504d51c7ed7612546f2c55876f444203b6e6fd",
+  "sha": "cf795a40665eaa781d96d254d27a61f3f0937cbd",
   "repository": "poad/actions-invistigate",
   "repository_owner": "poad",
   "repository_owner_id": "1867845",
   "repositoryUrl": "git://github.com/poad/actions-invistigate.git",
-  "run_id": "6230052775",
-  "run_number": "1",
+  "run_id": "6230024856",
+  "run_number": "1652",
   "retention_days": "90",
   "run_attempt": "1",
   "artifact_cache_size_limit": "10",
@@ -22,14 +22,12 @@
   "actor_id": "1867845",
   "actor": "poad",
   "triggering_actor": "poad",
-  "workflow": "CI (without permission)",
+  "workflow": "CI",
   "head_ref": "feat/with-permissions",
   "base_ref": "main",
   "event_name": "pull_request",
   "event": {
-    "action": "synchronize",
-    "after": "e3a17252cb2c9f9510c23103bb563e030c7b2fb8",
-    "before": "928bbbc794716fd6f5bf2f1f032000910a555efe",
+    "action": "opened",
     "number": 12,
     "pull_request": {
       "_links": {
@@ -43,10 +41,10 @@
           "href": "https://github.com/poad/actions-invistigate/pull/12"
         },
         "issue": {
-      "releases_url": "https://api.github.com/repos/poad/actions-invistigate/releases{/id}",
-      "size": 22,
-      "ssh_url": "git@github.com:poad/actions-invistigate.git",
-      "stargazers_count": 0,
+          "href": "https://api.github.com/repos/poad/actions-invistigate/issues/12"
+        },
+        "review_comment": {
+          "href": "https://api.github.com/repos/poad/actions-invistigate/pulls/comments{/number}"
       "stargazers_url": "https://api.github.com/repos/poad/actions-invistigate/stargazers",
       "statuses_url": "https://api.github.com/repos/poad/actions-invistigate/statuses/{sha}",
       "subscribers_url": "https://api.github.com/repos/poad/actions-invistigate/subscribers",
@@ -63,34 +61,7 @@
       "watchers_count": 0,
       "web_commit_signoff_required": false
     },
-    "html_url": "https://github.com/poad/actions-invistigate/pull/11",
-    "id": 1513219099,
-    "issue_url": "https://api.github.com/repos/poad/actions-invistigate/issues/11",
-    "labels": [],
-    "locked": false,
-    "maintainer_can_modify": false,
-    "merge_commit_sha": "de4bc4b9c37fb9aade086515828dcf380104fb34",
-    "mergeable": null,
-    "mergeable_state": "unknown",
-    "merged": false,
-    "merged_at": null,
-    "merged_by": null,
-    "milestone": null,
-    "node_id": "PR_kwDOEvHI3M5aMeQb",
-    "number": 11,
-    "patch_url": "https://github.com/poad/actions-invistigate/pull/11.patch",
-    "rebaseable": null,
-    "requested_reviewers": [],
-    "requested_teams": [],
-    "review_comment_url": "https://api.github.com/repos/poad/actions-invistigate/pulls/comments{/
-    "review_comments": 0,
-    "review_comments_url": "https://api.github.com/repos/poad/actions-invistigate/pulls/11/
-    "state": "open",
-    "statuses_url": "https://api.github.com/repos/poad/actions-invistigate/statuses/8065ef94287",
-    "title": "test",
-    "updated_at": "2023-09-13T05:33:44Z",
-    "url": "https://api.github.com/repos/poad/actions-invistigate/pulls/11",
-    "user": {
+    "sender": {
       "avatar_url": "https://avatars.githubusercontent.com/u/1867845?v=4",
       "events_url": "https://api.github.com/users/poad/events{/privacy}",
       "followers_url": "https://api.github.com/users/poad/followers",
@@ -118,18 +89,17 @@
   "ref_protected": false,
   "ref_type": "branch",
   "secret_source": "Actions",
-  "workflow_ref": "poad/actions-invistigate/.github/workflows/ci-without-permission.yml@refs/pull/12/merge",
-  "workflow_sha": "5a504d51c7ed7612546f2c55876f444203b6e6fd",
+  "workflow_ref": "poad/actions-invistigate/.github/workflows/ci.yml@refs/pull/12/merge",
+  "workflow_sha": "cf795a40665eaa781d96d254d27a61f3f0937cbd",
   "workspace": "/home/runner/work/actions-invistigate/actions-invistigate",
   "action": "__run_5",
   "event_path": "/home/runner/work/_temp/_github_workflow/event.json",
   "action_repository": "",
   "action_ref": "",
-  "path": "/home/runner/work/_temp/_runner_file_commands/add_path_d574622c-7e02-40b4-9f6e-d9f893428953",
-  "env": "/home/runner/work/_temp/_runner_file_commands/set_env_d574622c-7e02-40b4-9f6e-d9f893428953",
-  "step_summary": "/home/runner/work/_temp/_runner_file_commands/step_summary_d574622c-7e02-40b4-9f6e-d9f893428953",
-  "state": "/home/runner/work/_temp/_runner_file_commands/save_state_d574622c-7e02-40b4-9f6e-d9f893428953",
-  "output": "/home/runner/work/_temp/_runner_file_commands/set_output_d574622c-7e02-40b4-9f6e-d9f893428953"
+  "path": "/home/runner/work/_temp/_runner_file_commands/add_path_1342d503-ff53-428f-a7d4-756439d520d8",
+  "env": "/home/runner/work/_temp/_runner_file_commands/set_env_1342d503-ff53-428f-a7d4-756439d520d8",
+  "step_summary": "/home/runner/work/_temp/_runner_file_commands/step_summary_1342d503-ff53-428f-a7d4-756439d520d8",
+  "state": "/home/runner/work/_temp/_runner_file_commands/save_state_1342d503-ff53-428f-a7d4-756439d520d8",
+  "output": "/home/runner/work/_temp/_runner_file_commands/set_output_1342d503-ff53-428f-a7d4-756439d520d8"
 }
-
 ```
